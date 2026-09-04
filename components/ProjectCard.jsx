@@ -12,6 +12,7 @@ export default function ProjectCard({ project }) {
           alt={project.title}
           fill
           priority
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
           className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
         />
       </div>
