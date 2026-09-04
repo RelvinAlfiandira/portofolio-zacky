@@ -15,11 +15,6 @@ const skills = [
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg",
   },
   {
-    name: "Gin",
-    level: "Go Framework",
-    icon: "https://raw.githubusercontent.com/gin-gonic/logo/master/color.png",
-  },
-  {
     name: "MySQL",
     level: "Database",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
@@ -41,9 +36,9 @@ export default function SkillMarquee() {
     <section className="py-12 space-y-8">
       {/* Top Pill Badge */}
       <div className="flex justify-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-900/90 border border-zinc-800/80 backdrop-blur-md text-[11px] font-mono tracking-widest text-zinc-400 uppercase shadow-md">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md text-[11px] font-mono tracking-widest text-zinc-400 uppercase shadow-md">
           <span className="w-2 h-2 rounded-full bg-zinc-100 animate-pulse" />
-          MY EXPERT AREA
+          TECH STACK
         </div>
       </div>
 
@@ -55,7 +50,7 @@ export default function SkillMarquee() {
             {skills.map((skill, index) => (
               <div
                 key={`set1-${index}`}
-                className="w-48 h-36 bg-[#141414] border border-zinc-800/80 rounded-2xl p-5 flex flex-col justify-center items-center gap-2 hover:border-zinc-700 hover:bg-[#1a1a1a] transition-all duration-300 group shrink-0 shadow-lg"
+                className="w-48 h-36 bg-[#0e0e0e] border border-white/10 rounded-2xl p-5 flex flex-col justify-center items-center gap-2 hover:border-white/20 hover:bg-[#141414] transition-all duration-300 group shrink-0 shadow-lg"
               >
                 <img
                   src={skill.icon}
@@ -77,7 +72,7 @@ export default function SkillMarquee() {
             {skills.map((skill, index) => (
               <div
                 key={`set2-${index}`}
-                className="w-48 h-36 bg-[#141414] border border-zinc-800/80 rounded-2xl p-5 flex flex-col justify-center items-center gap-2 hover:border-zinc-700 hover:bg-[#1a1a1a] transition-all duration-300 group shrink-0 shadow-lg"
+                className="w-48 h-36 bg-[#0e0e0e] border border-white/10 rounded-2xl p-5 flex flex-col justify-center items-center gap-2 hover:border-white/20 hover:bg-[#141414] transition-all duration-300 group shrink-0 shadow-lg"
               >
                 <img
                   src={skill.icon}

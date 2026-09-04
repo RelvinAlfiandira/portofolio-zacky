@@ -8,25 +8,25 @@ const whatIDo = [
     icon: Server,
     title: 'Backend Development',
     subtitle: 'High Performance & Scalable Systems',
-    desc: 'Membangun sistem backend yang andal dan scalable',
+    desc: 'Membangun sistem backend yang andal, efisien, dan scalable',
   },
   {
     icon: Network,
     title: 'REST API Development',
     subtitle: 'Clean & Robust API Design',
-    desc: 'Merancang API yang bersih dan mudah dikonsumsi',
+    desc: 'Merancang arsitektur API yang bersih, terdokumentasi, dan modular',
   },
   {
     icon: Database,
     title: 'Database Management',
     subtitle: 'Relational Schema & Query Optimization',
-    desc: 'Skema relasional, query, dan optimalisasi data',
+    desc: 'Skema relasional yang terstruktur, indexing, dan optimalisasi data',
   },
   {
     icon: Globe,
     title: 'Web Application Development',
     subtitle: 'End-to-End System Integration',
-    desc: 'Aplikasi web end-to-end dari backend ke frontend',
+    desc: 'Pengembangan aplikasi web menyeluruh dari backend hingga integrasi frontend',
   },
 ];
 
@@ -66,10 +66,10 @@ export default function WhatIDoSection() {
           <motion.div
             key={title}
             variants={itemVariants}
-            className="flex items-center gap-5 rounded-3xl border border-zinc-800/60 bg-[#0a0a0a] p-5 sm:p-6 hover:border-zinc-700/80 transition-all duration-300"
+            className="flex items-center gap-5 rounded-[32px] border border-white/10 bg-[#080808] p-5 sm:p-6 hover:border-white/20 transition-all duration-300"
           >
             {/* Kotak Ikon Kiri Membulat Besar (Squircle Icon) */}
-            <div className="flex h-16 w-16 sm:h-20 sm:w-20 shrink-0 items-center justify-center rounded-2xl bg-[#1c1c1c] text-zinc-200">
+            <div className="flex h-16 w-16 sm:h-20 sm:w-20 shrink-0 items-center justify-center rounded-[22px] bg-[#141414] text-zinc-200 border border-white/10">
               <Icon size={32} strokeWidth={1.5} />
             </div>
 

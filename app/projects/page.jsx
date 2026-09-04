@@ -7,7 +7,7 @@ import { projectsData } from '@/data/projects';
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState('All');
-  const categories = ['All', 'Backend', 'Web', 'Education', 'Other'];
+  const categories = [];
 
   const filteredProjects = activeCategory === 'All'
     ? projectsData
@@ -19,9 +19,11 @@ export default function ProjectsPage() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
+        className="space-y-4"
       >
-        <h1 className="text-3xl font-bold text-white tracking-tight">Projects</h1>
-        <p className="text-slate-400 mt-2">Kumpulan proyek dan aplikasi yang telah saya kembangkan.</p>
+        <div>
+          <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Projects</h1>
+        </div>
       </motion.div>
 
       {/* Filter Buttons */}
@@ -29,16 +31,16 @@ export default function ProjectsPage() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="flex flex-wrap gap-2 border-b border-slate-800 pb-4"
+        className="flex flex-wrap gap-2 border-b border-white/10 pb-4"
       >
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            className={`relative px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+            className={`relative px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all ${
               activeCategory === cat
-                ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/30'
-                : 'text-slate-400 hover:text-white bg-slate-900'
+                ? 'bg-white text-black shadow-md'
+                : 'text-zinc-400 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/10'
             }`}
           >
             {cat}

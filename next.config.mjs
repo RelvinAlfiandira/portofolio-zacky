@@ -10,6 +10,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/achievement',
+        destination: '/achievements',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
