@@ -46,7 +46,7 @@ export default function Home() {
       </motion.section>
 
       {/* What I Do Section*/}
-      <WhatIDoSection />
+      {/* <WhatIDoSection /> */}
     </div>
   );
 }

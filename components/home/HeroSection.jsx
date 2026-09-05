@@ -59,7 +59,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="text-zinc-300 sm:text-zinc-400 text-sm sm:text-base leading-relaxed drop-shadow"
           >
-            Saya Muhammad Zacky Al Ghifari, mahasiswa Universitas Brawijaya, Fakultas Ilmu
+            Saya adalah Muhammad Zacky Al Ghifari, mahasiswa Universitas Brawijaya, Fakultas Ilmu
             Komputer, Program Studi Pendidikan Teknologi Informasi, dengan ketertarikan utama pada{' '}
             <span className="text-white font-medium">Backend Development</span>. Saya memiliki minat
             dalam membangun sistem yang terstruktur, merancang{' '}
