@@ -1,10 +1,10 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { achievementsData, currentlyLearning } from '@/data/achievements';
-import { Trophy, Award, BookOpen, Calendar, Building2, Sparkles } from 'lucide-react';
+import { Trophy, Award, BookOpen, Calendar, Building2, Sparkles, ArrowUpRight } from 'lucide-react';
 
-// Variabel animasi container untuk efek staggered
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -15,7 +15,6 @@ const containerVariants = {
   },
 };
 
-// Variabel animasi untuk setiap item timeline
 const itemVariants = {
   hidden: { opacity: 0, y: 25 },
   visible: {
@@ -25,7 +24,6 @@ const itemVariants = {
   },
 };
 
-// Variabel animasi untuk badge Currently Learning
 const badgeVariants = {
   hidden: { opacity: 0, scale: 0.9 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
@@ -62,43 +60,48 @@ export default function AchievementsPage() {
         {achievementsData.map((item, index) => (
           <motion.div key={item.id || index} variants={itemVariants} className="relative pl-6 sm:pl-10 group">
             {/* Timeline Node Icon Indicator */}
-            <div className="absolute -left-[17px] top-6 w-8 h-8 rounded-full bg-[#141414] border border-white/20 flex items-center justify-center text-zinc-300 group-hover:border-white/40 group-hover:text-white group-hover:scale-110 transition-all duration-300 shadow-md">
+            <div className="absolute -left-[17px] top-6 w-8 h-8 rounded-full bg-[#141414] border border-white/20 flex items-center justify-center text-zinc-300 group-hover:border-white/40 group-hover:text-white group-hover:scale-110 transition-all duration-300 shadow-md z-10">
               <Trophy size={14} />
             </div>
 
-            {/* Achievement Card */}
-            <div className="relative rounded-[32px] border border-white/10 bg-[#080808] p-5 sm:p-7 hover:border-white/20 transition-all duration-300 shadow-xl space-y-5">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                {/* Left: Squircle Icon & Title Group */}
-                <div className="flex items-start sm:items-center gap-4">
-                  <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-[22px] bg-[#141414] text-zinc-200 border border-white/10 group-hover:text-white group-hover:border-white/20 transition-all">
-                    <Award size={24} strokeWidth={1.5} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-medium text-white group-hover:text-zinc-200 transition-colors leading-snug">
-                      {item.title}
-                    </h3>
-                    <div className="flex items-center gap-1.5 text-xs text-zinc-400 font-sans mt-0.5">
-                      <Building2 size={13} className="text-zinc-500" />
-                      <span>{item.organization}</span>
+            {/* Link Navigasi ke Halaman Detail */}
+            <Link href={`/achievements/${item.id}`} className="block cursor-pointer">
+              <div className="relative rounded-[32px] border border-white/10 bg-[#080808] p-5 sm:p-7 hover:border-white/30 hover:bg-[#0d0d0d] transition-all duration-300 shadow-xl space-y-5 group/card">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  {/* Left: Squircle Icon & Title Group */}
+                  <div className="flex items-start sm:items-center gap-4">
+                    <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-[22px] bg-[#141414] text-zinc-200 border border-white/10 group-hover/card:text-white group-hover/card:border-white/20 transition-all">
+                      <Award size={24} strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h3 className="text-lg sm:text-xl font-medium text-white group-hover/card:text-zinc-200 transition-colors leading-snug">
+                          {item.title}
+                        </h3>
+                        <ArrowUpRight size={18} className="text-zinc-500 group-hover/card:text-white group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5 transition-all" />
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs text-zinc-400 font-sans mt-0.5">
+                        <Building2 size={13} className="text-zinc-500" />
+                        <span>{item.organization}</span>
+                      </div>
                     </div>
                   </div>
+
+                  {/* Right: Year Badge Pill */}
+                  <div className="flex items-center sm:self-center">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-zinc-300 shadow-sm">
+                      <Calendar size={12} className="text-zinc-500" />
+                      {item.year}
+                    </span>
+                  </div>
                 </div>
 
-                {/* Right: Year Badge Pill */}
-                <div className="flex items-center sm:self-center">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-zinc-300 shadow-sm">
-                    <Calendar size={12} className="text-zinc-500" />
-                    {item.year}
-                  </span>
-                </div>
+                {/* Description */}
+                <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed font-sans pl-0 sm:pl-[4.5rem]">
+                  {item.description}
+                </p>
               </div>
-
-              {/* Description */}
-              <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed font-sans pl-0 sm:pl-[4.5rem]">
-                {item.description}
-              </p>
-            </div>
+            </Link>
           </motion.div>
         ))}
       </motion.div>
