@@ -9,7 +9,7 @@ export const projectsData = [
   {
     id: 'perpus',
     title: 'SIPUS',
-    description: 'Game-Based Learning platform designed to help students learn linear data structures in an interactive way.',
+    description: 'G',
     image: '/CRUD.jpeg',
     category: 'Website',
   },

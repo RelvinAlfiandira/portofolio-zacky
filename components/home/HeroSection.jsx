@@ -70,6 +70,13 @@ export default function HeroSection() {
 
           <div className="pt-1 sm:pt-2 flex flex-wrap items-center gap-3">
             <a
+              href="mailto:zackyalghifr@gmail.com"
+              className="inline-flex items-center justify-center h-11 px-6 border border-zinc-700 hover:border-zinc-500 bg-white/[0.04] backdrop-blur-sm text-zinc-200 hover:text-white font-medium rounded-full transition-colors text-xs sm:text-sm pointer-events-auto"
+            >
+              Let&apos;s Connect
+            </a>
+
+            <a
               href="/cv.pdf"
               download
               className="inline-flex items-center justify-center gap-3 h-11 px-6 bg-white hover:bg-zinc-200 text-black font-medium rounded-full transition-all text-xs sm:text-sm shadow-xl group pointer-events-auto"
@@ -78,13 +85,6 @@ export default function HeroSection() {
               <span className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center group-hover:scale-105 transition-transform">
                 <Download size={12} />
               </span>
-            </a>
-
-            <a
-              href="mailto:zackyalghifr@gmail.com"
-              className="inline-flex items-center justify-center h-11 px-6 border border-zinc-700 hover:border-zinc-500 bg-white/[0.04] backdrop-blur-sm text-zinc-200 hover:text-white font-medium rounded-full transition-colors text-xs sm:text-sm pointer-events-auto"
-            >
-              Let's Connect
             </a>
           </div>
         </motion.div>

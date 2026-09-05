@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { achievementsData, currentlyLearning } from '@/data/achievements';
-import { Trophy, Award, BookOpen, Calendar, Building2, Sparkles, ArrowUpRight } from 'lucide-react';
+import { Trophy, BookOpen, Calendar, Building2, Sparkles, ArrowRight } from 'lucide-react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -45,68 +46,71 @@ export default function AchievementsPage() {
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Achievements</h1>
         <p className="text-zinc-400 text-sm sm:text-base max-w-2xl leading-relaxed font-sans">
-          Kumpulan pencapaian akademis, kompetisi, dan pengakuan profesional yang diperoleh dalam perjalanan rekayasa perangkat lunak.
+          Kumpulan pencapaian akademis dan kompetisi.
         </p>
       </motion.div>
 
-      {/* Timeline Achievements Section */}
+      {/* Achievement Cards Grid */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        className="relative border-l border-white/10 ml-4 sm:ml-6 space-y-8 sm:space-y-10"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
       >
-        {achievementsData.map((item, index) => (
-          <motion.div key={item.id || index} variants={itemVariants} className="relative pl-6 sm:pl-10 group">
-            {/* Timeline Node Icon Indicator */}
-            <div className="absolute -left-[17px] top-6 w-8 h-8 rounded-full bg-[#141414] border border-white/20 flex items-center justify-center text-zinc-300 group-hover:border-white/40 group-hover:text-white group-hover:scale-110 transition-all duration-300 shadow-md z-10">
-              <Trophy size={14} />
-            </div>
+        {achievementsData.map((item) => (
+          <motion.div key={item.id} variants={itemVariants} className="group relative h-80">
+            <Link href={`/achievements/${item.id}`} className="block h-full">
+              <div className="relative h-full rounded-3xl overflow-hidden border border-white/10 group-hover:border-white/30 transition-all duration-300 shadow-xl">
+                {/* Foto achievement sebagai background kartu */}
+                {item.image ? (
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    style={{ objectPosition: item.imagePosition || 'center' }}
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-[#141414]" />
+                )}
 
-            {/* Link Navigasi ke Halaman Detail */}
-            <Link href={`/achievements/${item.id}`} className="block cursor-pointer">
-              <div className="relative rounded-[32px] border border-white/10 bg-[#080808] p-5 sm:p-7 hover:border-white/30 hover:bg-[#0d0d0d] transition-all duration-300 shadow-xl space-y-5 group/card">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  {/* Left: Squircle Icon & Title Group */}
-                  <div className="flex items-start sm:items-center gap-4">
-                    <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-[22px] bg-[#141414] text-zinc-200 border border-white/10 group-hover/card:text-white group-hover/card:border-white/20 transition-all">
-                      <Award size={24} strokeWidth={1.5} />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-lg sm:text-xl font-medium text-white group-hover/card:text-zinc-200 transition-colors leading-snug">
-                          {item.title}
-                        </h3>
-                        <ArrowUpRight size={18} className="text-zinc-500 group-hover/card:text-white group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5 transition-all" />
-                      </div>
-                      <div className="flex items-center gap-1.5 text-xs text-zinc-400 font-sans mt-0.5">
-                        <Building2 size={13} className="text-zinc-500" />
-                        <span>{item.organization}</span>
-                      </div>
-                    </div>
+                {/* Gradient overlay biar teks tetap kebaca di atas foto */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/10" />
+
+                {/* Konten di atas foto */}
+                <div className="relative z-10 flex h-full flex-col justify-between p-6">
+                  <div className="flex items-center justify-between">
+                    {/* <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white">
+                      <Trophy size={16} />
+                    </div> */}
                   </div>
 
-                  {/* Right: Year Badge Pill */}
-                  <div className="flex items-center sm:self-center">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-zinc-300 shadow-sm">
-                      <Calendar size={12} className="text-zinc-500" />
-                      {item.year}
-                    </span>
+                  <div className="space-y-2">
+                    <h3 className="text-lg sm:text-xl font-semibold text-white leading-snug">
+                      {item.title}
+                    </h3>
+                    <div className="flex items-center gap-1.5 text-xs text-zinc-300 font-sans">
+                      <Building2 size={12} />
+                      <span>{item.organization}</span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed line-clamp-2">
+                      {item.description}
+                    </p>
+                    <div className="flex items-center gap-2 pt-2 text-xs font-semibold text-white">
+                      <span>Lihat Detail</span>
+                      <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                    </div>
                   </div>
                 </div>
-
-                {/* Description */}
-                <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed font-sans pl-0 sm:pl-[4.5rem]">
-                  {item.description}
-                </p>
               </div>
             </Link>
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Section Currently Learning */}
+      Section Currently Learning
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -121,7 +125,7 @@ export default function AchievementsPage() {
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <h2 className="text-xl sm:text-2xl font-light text-white tracking-tight">Currently Learning</h2>
-              <Sparkles size={18} className="text-zinc-400 hidden sm:inline" />
+              {/* <Sparkles size={18} className="text-zinc-400 hidden sm:inline" /> */}
             </div>
             <p className="text-xs sm:text-sm text-zinc-400 font-sans">
               Teknologi, pola arsitektur, dan framework yang sedang saya eksplorasi secara aktif saat ini.

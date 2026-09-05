@@ -59,18 +59,19 @@ export default function AchievementDetailPage({ params }) {
         </div>
 
         {/* Gambar Foto / Sertifikat */}
-        {achievement.image && (
-          <div className="relative w-full aspect-[16/9] rounded-[24px] overflow-hidden border border-white/10 bg-[#141414] shadow-lg">
-            <Image
-              src={achievement.image}
-              alt={achievement.title}
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 800px"
-              className="object-cover hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-        )}
+       {achievement.image && (
+  <div className="relative w-full aspect-[4/3] rounded-[24px] overflow-hidden border border-white/10 bg-[#141414] shadow-lg">
+    <Image
+      src={achievement.image}
+      alt={achievement.title}
+      fill
+      priority
+      sizes="(max-width: 768px) 100vw, 800px"
+      className="object-cover hover:scale-105 transition-transform duration-500"
+      style={{ objectPosition: achievement.imagePosition || 'center' }}
+    />
+  </div>
+)}
 
         {/* Deskripsi Lengkap */}
         <div className="space-y-4 text-zinc-300 leading-relaxed font-sans text-sm sm:text-base">
