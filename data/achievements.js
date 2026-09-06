@@ -8,7 +8,7 @@ export const achievementsData = [
     image: '/pkm.webp', // Simpan foto di folder public/achievements/
     imagePosition: 'center 100%',
     description: 'Achieved recognition in PKM Champion Cup 2026 through an innovative.',
-    fullDescription: 'Meraih penghargaan pada ajang PKM Champion Cup 2026 melalui pengembangan proyek inovatif yang menggabungkan teknologi modern untuk solusi di bidang edukasi masyarakat terhadap gadget. Proyek ini dinilai berdasarkan kompleksitas arsitektur, dampak sosial, serta skalabilitas implementasi.',
+    fullDescription: 'Won an award at the PKM Champion Cup 2026 for developing an innovative project that integrates modern technology to provide solutions for public education regarding gadget usage. The project was evaluated based on architectural complexity, social impact, and implementation scalability.',
   },
   {
     id: 'uny-essay',
@@ -19,7 +19,7 @@ export const achievementsData = [
     image: '/jogja.jpeg', // Simpan foto di folder public/achievements/
     imagePosition: 'center 75%',
     description: 'Gold Medal Essay national Competition at Universitas Negeri Yogyakarta',
-    fullDescription: 'Berhasil meraih Gold Medal Essay National Competiion yang diselenggarakan oleh Universitas Negeri Yogyakarta',
+    fullDescription: 'Won the Gold Medal in the National Essay Competition organized by Yogyakarta State University.',
   },
   {
     id: 'idea-fest',
@@ -30,7 +30,7 @@ export const achievementsData = [
     image: '/bali.jpeg', // Simpan foto di folder public/achievements/
     imagePosition: 'center 35%',
     description:'Bronze Medal Essay national Idea Fest 4 at Universitas Dhyana Pura',
-    fullDescription: 'Berhasil meraih Bronze Medal pada lomba essay di universitas Dhyana Pura.',
+    fullDescription: 'Successfully won the Bronze Medal in the National Essay Competition held at Dhyana Pura University.',
   },
 ];
 

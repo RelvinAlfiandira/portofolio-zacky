@@ -1,71 +1,56 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion';
+import StaggeredMenu from '@/components/StaggeredMenu';
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Achievements', path: '/achievements' },
+    { label: 'Home', ariaLabel: 'Go to Home page', link: '/' },
+    { label: 'Projects', ariaLabel: 'View Projects', link: '/projects' },
+    { label: 'Achievements', ariaLabel: 'View Achievements', link: '/achievements' },
   ];
 
   return (
-    <header className="sticky top-6 z-50 max-w-6xl mx-auto px-4 sm:px-8 flex justify-end">
-      {/* Desktop Capsule Navigation Pill */}
-      <nav className="hidden md:flex items-center gap-6 bg-zinc-950/80 backdrop-blur-md border border-zinc-800/80 px-6 py-2.5 rounded-full shadow-2xl">
+    <header className="fixed top-6 left-0 right-0 z-50 max-w-6xl mx-auto px-4 sm:px-8 flex justify-between md:justify-center items-center pointer-events-none">
+      
+      {/* Buat Desktop */}
+      <nav className="pointer-events-auto hidden md:flex items-center gap-1 bg-zinc-950/80 backdrop-blur-md border border-zinc-800/80 px-3 py-2 rounded-full shadow-2xl relative">
         {navLinks.map((link) => {
-          const isActive = pathname === link.path;
+          const isActive = pathname === link.link;
           return (
             <Link
-              key={link.path}
-              href={link.path}
-              className={`text-sm transition-colors font-sans ${
+              key={link.link}
+              href={link.link}
+              aria-label={link.ariaLabel}
+              className={`relative px-4 py-1.5 text-sm transition-colors duration-300 font-sans ${
                 isActive
                   ? 'text-white font-medium'
                   : 'text-zinc-400 hover:text-zinc-200'
               }`}
             >
-              {link.name}
+              {/* Highlight Background Buat Link Aktif */}
+              {isActive && (
+                <motion.div
+                  layoutId="activeNavTab"
+                  className="absolute inset-0 bg-white/10 rounded-full -z-10"
+                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                />
+              )}
+              {link.label}
             </Link>
           );
         })}
       </nav>
 
-      {/* Mobile Toggle Button */}
-      <div className="md:hidden">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="bg-zinc-950/80 backdrop-blur-md border border-zinc-800 p-3 rounded-full text-zinc-300 hover:text-white"
-        >
-          {isOpen ? <X size={18} /> : <Menu size={18} />}
-        </button>
+      {/* Nav Buat Mobile */}
+      <div className="md:hidden pointer-events-auto w-full flex justify-end">
+        <StaggeredMenu items={navLinks} />
       </div>
 
-      {/* Mobile Dropdown Menu */}
-      {isOpen && (
-        <div className="md:hidden absolute top-14 right-4 bg-zinc-950/95 border border-zinc-800 rounded-2xl p-4 min-w-[180px] shadow-2xl backdrop-blur-xl space-y-2">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              href={link.path}
-              onClick={() => setIsOpen(false)}
-              className={`block px-4 py-2 rounded-xl text-sm ${
-                pathname === link.path
-                  ? 'bg-zinc-800 text-white font-medium'
-                  : 'text-zinc-400 hover:text-zinc-200'
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
-      )}
     </header>
   );
 }

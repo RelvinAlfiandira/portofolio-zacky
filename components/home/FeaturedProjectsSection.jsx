@@ -3,8 +3,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { ArrowRight, Folder } from 'lucide-react';
 import { projectsData } from '@/data/projects';
-import { Folder, ArrowRight } from 'lucide-react';
+import Button from '@/components/ui/Button';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -25,35 +26,40 @@ const itemVariants = {
   },
 };
 
-export default function ProjectsPage() {
+export default function FeaturedProjectsSection() {
+  const featuredProjects = projectsData.slice(0, 2);
+
   return (
-    <main className="w-full min-h-screen pt-28 sm:pt-36 pb-20 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto space-y-16">
+    <section className="w-full min-h-screen flex flex-col justify-center items-center py-20 px-4 overflow-hidden relative">
+      <div className="max-w-6xl w-full mx-auto space-y-12">
         
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="space-y-3 border-b border-white/10 pb-8"
+        <motion.div 
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-center text-center space-y-3 max-w-2xl mx-auto"
         >
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-zinc-100 tracking-tight">
-            Projects
-          </h1>
-          <p className="text-zinc-400 text-sm sm:text-base max-w-2xl leading-relaxed">
-            A collection of technical projects, backend solutions, and software architecture I have built and contributed to.
+          {/* Headline */}
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-zinc-100">
+            Featured Projects
+          </h2>
+
+          <p className="text-zinc-400 text-sm sm:text-lg leading-relaxed">
+            A selection of key projects showcasing my work in backend architecture, web development, and system integration.
           </p>
         </motion.div>
 
-        {/* Projects Cards */}
-        <motion.div
+        {/* Project Cards */}
+        <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
-          {projectsData.map((project, index) => (
+          {featuredProjects.map((project) => (
             <motion.div key={project.id} variants={itemVariants} className="group relative h-80">
               <Link href={`/projects/${project.id}`} className="block h-full">
                 <div className="relative h-full rounded-3xl overflow-hidden border border-white/10 group-hover:border-white/30 transition-all duration-300 shadow-xl">
@@ -62,8 +68,7 @@ export default function ProjectsPage() {
                       src={project.image}
                       alt={project.title}
                       fill
-                      priority={index < 3}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       style={{ objectPosition: project.imagePosition || 'center' }}
                     />
@@ -103,8 +108,21 @@ export default function ProjectsPage() {
             </motion.div>
           ))}
         </motion.div>
+          
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="flex justify-center pt-4"
+        >
+          <Button href="/projects" variant="white" icon={ArrowRight}>
+            View All Projects
+          </Button>
+          
+        </motion.div>
 
       </div>
-    </main>
+    </section>
   );
 }
