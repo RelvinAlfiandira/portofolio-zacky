@@ -104,7 +104,7 @@ export default function AchievementsPage() {
           ))}
         </motion.div>
 
-        {/* Section Currently Learning */}
+        {/* Section Currently Learning
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -144,7 +144,7 @@ export default function AchievementsPage() {
               </motion.div>
             ))}
           </motion.div>
-        </motion.div>
+        </motion.div> */}
 
       </div>
     </main>
