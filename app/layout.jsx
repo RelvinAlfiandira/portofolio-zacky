@@ -11,8 +11,8 @@ const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
 const poppins = Poppins({ subsets: ["latin"], weight: ["700", "800"], variable: "--font-poppins" });
 
 export const metadata = {
-  title: 'Muhammad Zacky Al Ghifari | Backend Developer',
-  description: 'Portfolio of Muhammad Zacky Al Ghifari - Backend Developer & Computer Science Student at Universitas Brawijaya.',
+  title: 'Muhammad Zacky Al Ghifari',
+  description: 'Portfolio of Muhammad Zacky Al Ghifari - Computer Science Student at Universitas Brawijaya.',
 };
 
 export default function RootLayout({ children }) {
