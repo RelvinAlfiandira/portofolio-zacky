@@ -9,7 +9,7 @@ export const projectsData = [
   {
     id: 'perpus',
     title: 'SIPUS',
-    description: 'G',
+    description: 'Library System',
     image: '/CRUD.jpeg',
     category: 'Website',
   },
