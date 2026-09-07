@@ -116,9 +116,9 @@ export default function FeaturedProjectsSection() {
           transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="flex justify-center pt-4"
         >
-          <Button href="/projects" variant="white" icon={ArrowRight}>
-            View All Projects
-          </Button>
+          <Button href="/projects" variant="flow">
+  View All Projects
+</Button>
           
         </motion.div>
 
