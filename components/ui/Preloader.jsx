@@ -18,6 +18,29 @@ export default function Preloader({ onPreloaderComplete }) {
     return false;
   });
 
+  // Nonaktifkan scrollbar dan gesture sentuh selama Preloader aktif
+  useEffect(() => {
+    if (isLoading) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    };
+  }, [isLoading]);
+
+  // Jika sudah pernah dimuat (sessionStorage set), panggil callback langsung saat mount
+  useEffect(() => {
+    if (isClient && !isLoading && onPreloaderComplete) {
+      onPreloaderComplete();
+    }
+  }, [isClient, isLoading, onPreloaderComplete]);
+
   const handleTextAnimationComplete = () => {
     setTimeout(() => {
       setIsLoading(false);
@@ -26,12 +49,6 @@ export default function Preloader({ onPreloaderComplete }) {
       }
     }, 400);
   };
-
-  useEffect(() => {
-    if (isClient && !isLoading && onPreloaderComplete) {
-      onPreloaderComplete();
-    }
-  }, [isClient, isLoading, onPreloaderComplete]);
 
   if (!isClient) return null;
 
@@ -53,7 +70,7 @@ export default function Preloader({ onPreloaderComplete }) {
             duration: 1.1,
             ease: [0.76, 0, 0.24, 1], 
           }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#080808] select-none pointer-events-auto px-4 overflow-hidden"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#080808] select-none pointer-events-auto touch-none px-4 overflow-hidden"
         >
           <div className="w-full max-w-4xl mx-auto flex justify-center items-center">
             <StrokeText

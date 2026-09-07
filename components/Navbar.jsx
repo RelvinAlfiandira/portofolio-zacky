@@ -32,7 +32,6 @@ export default function Navbar() {
                   : 'text-zinc-400 hover:text-zinc-200'
               }`}
             >
-              {/* Highlight Background Buat Link Aktif */}
               {isActive && (
                 <motion.div
                   layoutId="activeNavTab"
@@ -47,9 +46,9 @@ export default function Navbar() {
       </nav>
 
       {/* Nav Buat Mobile */}
-      <div className="md:hidden pointer-events-auto w-full flex justify-end">
+      <nav className="md:hidden pointer-events-auto w-full flex justify-end">
         <StaggeredMenu items={navLinks} />
-      </div>
+      </nav>
 
     </header>
   );
