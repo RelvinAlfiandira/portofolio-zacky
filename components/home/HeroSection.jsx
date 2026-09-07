@@ -66,7 +66,7 @@ export default function HeroSection({ isReady }) {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-10 sm:mt-14 w-full max-w-xs sm:max-w-none mx-auto"
         >
-          <Button href="/projects" variant="white" icon={ArrowRight}>
+          <Button href="/projects" variant="flow">
             View Projects
           </Button>
 
@@ -74,7 +74,7 @@ export default function HeroSection({ isReady }) {
             Let&apos;s Connect
           </Button>
         </motion.div>
-      </div>
+      </div> {/* <-- Penutup div max-w-4xl yang sebelumnya kurang */}
 
       <motion.p
         initial={{ opacity: 0 }}

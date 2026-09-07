@@ -45,16 +45,16 @@ export default function AboutSection() {
               <span className="font-medium text-zinc-100">databases</span>, and understanding how applications function efficiently behind the scenes.
             </p>
           </div>
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            <Button
-              href="https://github.com/Zackyalghfr?subject=Let's%20Connect"
-              variant="white"
-              icon={ArrowRight}
-              className="btn-ripple"
-            >
-              Let&apos;s Connect
-            </Button>
-          </div>
+         <div className="flex flex-wrap items-center gap-4 pt-2">
+  <Button 
+    href="https://github.com/Zackyalghfr?subject=Let's%20Connect" 
+    variant="white" 
+    icon={ArrowRight}
+    className="btn-ripple"
+  >
+    Let&apos;s Connect
+  </Button>
+</div>
         </motion.div>
 
       </div>
