@@ -10,18 +10,18 @@ const DEFAULT_TEXT = 'Draw Attention';
 
 const StrokeText = ({
   text = DEFAULT_TEXT,
-  strokeColor = '#A78BFA',
-  fillColor = '#F8FAFC',
+  strokeColor = '#15405f',
+  fillColor = '#ffffff',
   strokeWidth = 1.4,
-  drawDuration = 1.6,
+  drawDuration = 1.2,
   fillDelay = 0.2,
-  stagger = 0.05,
+  stagger = 0.04,
   ease = 'power2.out',
   trigger = 'mount',
   fillMode = 'wipe',
-  fontSize = 128,
+  fontSize = 64,
   fontWeight = 800,
-  letterSpacing = -4,
+  letterSpacing = -1,
   reverse = false,
   className = '',
   style = {},
@@ -31,14 +31,20 @@ const StrokeText = ({
   const strokeTextRef = useRef(null);
   const wipeRectRef = useRef(null);
 
-  const [box, setBox] = useState(null);
+  const [box, setBox] = useState(() => {
+    const approxWidth = Math.max(String(text ?? '').length * fontSize * 0.55, 300);
+    return {
+      x: 0,
+      y: -fontSize * 0.8,
+      width: approxWidth,
+      height: fontSize * 1.3
+    };
+  });
 
   const rawId = useId();
   const wipeId = `stroke-text-wipe-${rawId.replace(/[^a-zA-Z0-9_-]/g, '')}`;
 
   const characters = useMemo(() => Array.from(String(text ?? '')), [text]);
-
-  const dash = Math.max(fontSize * 7, 200);
 
   const fontStyle = useMemo(
     () => ({
@@ -110,14 +116,15 @@ const StrokeText = ({
 
     const setStart = () => {
       gsap.killTweensOf(targets);
-      gsap.set(strokes, { strokeDasharray: dash, strokeDashoffset: dash });
+      // Mulai dengan huruf transparan dan sedikit bergeser dari bawah untuk efek masuk yang elegan
+      gsap.set(strokes, { opacity: 0, y: 20, scale: 0.95 });
       gsap.set(fills, { opacity: useWipe ? 1 : 0 });
       if (wipe) gsap.set(wipe, { attr: { width: 0 } });
     };
 
     const setEnd = () => {
       gsap.killTweensOf(targets);
-      gsap.set(strokes, { strokeDasharray: dash, strokeDashoffset: 0 });
+      gsap.set(strokes, { opacity: 1, y: 0, scale: 1 });
       gsap.set(fills, { opacity: fillEnabled ? 1 : 0 });
       if (wipe) gsap.set(wipe, { attr: { width: fillEnabled ? box.width : 0 } });
     };
@@ -135,15 +142,28 @@ const StrokeText = ({
         repeat: trigger === 'loop' ? -1 : 0,
         repeatDelay: trigger === 'loop' ? 0.9 : 0,
         defaults: { overwrite: 'auto' },
-        onComplete: ()=> {
+        onComplete: () => {
           if (typeof onComplete === 'function') {
             onComplete();
           }
         }
       });
 
-      tl.to(strokes, { strokeDashoffset: 0, duration: drawDuration, ease, stagger: staggerConfig }, 0);
+      // Animasi kedatangan outline biru berurutan (stagger) per huruf
+      tl.to(
+        strokes,
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: drawDuration,
+          ease: 'back.out(1.4)',
+          stagger: staggerConfig
+        },
+        0
+      );
 
+      // Efek wipe mengisi warna putih setelah outline biru muncul
       if (useWipe && wipe) {
         tl.to(
           wipe,
@@ -194,7 +214,7 @@ const StrokeText = ({
       timeline?.kill();
       gsap.killTweensOf(targets);
     };
-  }, [box, dash, drawDuration, fillDelay, stagger, ease, trigger, fillMode, reverse]);
+  }, [box, drawDuration, fillDelay, stagger, ease, trigger, fillMode, reverse]);
 
   const viewBox = box ? `${box.x} ${box.y} ${box.width} ${box.height}` : `0 ${-fontSize} 600 ${fontSize * 1.3}`;
 
@@ -221,6 +241,7 @@ const StrokeText = ({
           </defs>
         )}
 
+        {/* Lapisan Outline/Stroke Biru */}
         <text
           ref={strokeTextRef}
           className="select-none"
@@ -240,6 +261,7 @@ const StrokeText = ({
           ))}
         </text>
 
+        {/* Lapisan Fill Putih yang disapu (Wipe) */}
         <text
           className="select-none"
           x="0"
