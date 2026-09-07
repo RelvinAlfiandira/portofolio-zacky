@@ -11,7 +11,7 @@ const getServerSnapshot = () => false;
 // Batas maksimal preloader boleh tampil. Kalau animasi StrokeText
 // tidak pernah memanggil onComplete (macet/gagal), preloader tetap
 // dipaksa hilang setelah durasi ini, supaya situs tidak pernah stuck permanen.
-const MAX_PRELOADER_MS = 2000;
+const MAX_PRELOADER_MS = 3500;
 
 export default function Preloader({ onPreloaderComplete }) {
   const isClient = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
