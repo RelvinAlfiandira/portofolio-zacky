@@ -140,6 +140,7 @@ body {
 
 @theme {
   --font-poppins: var(--font-poppins);
+<<<<<<< Updated upstream
 }
 
 .dark {
@@ -211,4 +212,6 @@ body {
 * {
   scrollbar-width: thin;
   scrollbar-color: #2c536f #080808;
+=======
+>>>>>>> Stashed changes
 }

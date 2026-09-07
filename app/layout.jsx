@@ -1,14 +1,29 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+<<<<<<< Updated upstream
 import Preloader from '@/components/ui/Preloader';
 import BackgroundBeams from '@/components/BackgroundBeams';
 import { Manrope, Poppins, Geist } from "next/font/google";
+=======
+import { Manrope, Poppins } from "next/font/google";
+>>>>>>> Stashed changes
 import './globals.css';
 import { cn } from "@/lib/utils";
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
 const poppins = Poppins({ subsets: ["latin"], weight: ["700", "800"], variable: "--font-poppins" });
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["700", "800"],
+  variable: "--font-poppins",
+});
 
 export const metadata = {
   title: 'Muhammad Zacky Al Ghifari | Backend Developer',
@@ -17,6 +32,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+<<<<<<< Updated upstream
     <html lang="en" 
     data-scroll-behavior="smooth"
     className={cn(manrope.variable, poppins.variable, "font-sans", geist.variable)}>
@@ -40,6 +56,15 @@ export default function RootLayout({ children }) {
           
           <Footer />
         </div>
+=======
+    <html lang="en" className={`${manrope.variable} ${poppins.variable}`}>
+      <body className="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+        <Navbar />
+        <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex-1 w-full">
+          {children}
+        </main>
+        <Footer />
+>>>>>>> Stashed changes
       </body>
     </html>
   );
