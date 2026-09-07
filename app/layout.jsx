@@ -11,7 +11,7 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["700", "800"], variable: 
 
 export const metadata = {
   title: 'Muhammad Zacky Al Ghifari | Backend Developer',
-  description: 'Portfolio of Muhammad Zacky Al Ghifari - Backend Developer & Computer Science Student.',
+  description: 'Portfolio of Muhammad Zacky Al Ghifari - Backend Developer & Computer Science Student at Universitas Brawijaya.',
 };
 
 export default function RootLayout({ children }) {

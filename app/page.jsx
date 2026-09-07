@@ -14,7 +14,6 @@ export default function Home() {
     <>
       <Preloader onPreloaderComplete={() => setIsReady(true)} />
 
-      {/* konten muncul kalau isReady = true */}
       <div 
         className={`space-y-20 pb-16 transition-opacity duration-700 ease-out ${
           isReady 

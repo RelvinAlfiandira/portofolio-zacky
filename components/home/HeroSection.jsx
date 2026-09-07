@@ -5,24 +5,10 @@ import { ArrowRight } from 'lucide-react';
 import TextType from '@/components/TextType'; 
 import Button from '@/components/ui/Button';
 
-export default function HeroSection({ isReady }) {
-  const containerVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1],
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
+export default function HeroSection() {
   return (
-    <section className="relative w-full h-[100svh] min-h-screen flex flex-col justify-center sm:justify-between items-center text-center pt-20 sm:pt-28 pb-8 sm:py-16 px-4 overflow-hidden">
-      <div className="hidden sm:block" />
-      <div className="max-w-4xl mx-auto relative z-10 my-auto py-2 sm:py-4">
+    <section className="relative w-full min-h-screen flex flex-col justify-center items-center text-center pt-24 pb-12 sm:py-20 px-4">
+      <div className="max-w-4xl mx-auto relative z-10 my-auto py-4">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -80,7 +66,7 @@ export default function HeroSection({ isReady }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="text-[11px] sm:text-xs text-zinc-500 pt-2 sm:pt-4 relative z-10"
+        className="text-[11px] sm:text-xs text-zinc-500 mt-8 sm:mt-12 relative z-10"
       >
         Open for collaboration opportunities
       </motion.p>

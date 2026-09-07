@@ -2,10 +2,10 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import StaggeredMenu from '@/components/StaggeredMenu';
 
-export default function Navbar() {
+export default function Navbar({ isReady = true }) {
   const pathname = usePathname();
 
   const navLinks = [
@@ -14,9 +14,15 @@ export default function Navbar() {
     { label: 'Achievements', ariaLabel: 'View Achievements', link: '/achievements' },
   ];
 
+  if (!isReady) return null;
+
   return (
-    <header className="fixed top-6 left-0 right-0 z-50 max-w-6xl mx-auto px-4 sm:px-8 flex justify-between md:justify-center items-center pointer-events-none">
-      
+    <motion.header 
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="fixed top-6 left-0 right-0 z-50 max-w-6xl mx-auto px-4 sm:px-8 flex justify-between md:justify-center items-center pointer-events-none"
+    >
       {/* Buat Desktop */}
       <nav className="pointer-events-auto hidden md:flex items-center gap-1 bg-zinc-950/80 backdrop-blur-md border border-zinc-800/80 px-3 py-2 rounded-full shadow-2xl relative">
         {navLinks.map((link) => {
@@ -49,7 +55,6 @@ export default function Navbar() {
       <nav className="md:hidden pointer-events-auto w-full flex justify-end">
         <StaggeredMenu items={navLinks} />
       </nav>
-
-    </header>
+    </motion.header>
   );
 }
