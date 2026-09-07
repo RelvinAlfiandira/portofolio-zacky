@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import StaggeredMenu from '@/components/StaggeredMenu';
 
 export default function Navbar({ isReady = true }) {
@@ -18,9 +18,9 @@ export default function Navbar({ isReady = true }) {
 
   return (
     <motion.header 
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4 }}
       className="fixed top-6 left-0 right-0 z-50 max-w-6xl mx-auto px-4 sm:px-8 flex justify-between md:justify-center items-center pointer-events-none"
     >
       {/* Buat Desktop */}
@@ -52,9 +52,9 @@ export default function Navbar({ isReady = true }) {
       </nav>
 
       {/* Nav Buat Mobile */}
-      <nav className="md:hidden pointer-events-auto w-full flex justify-end">
+      <div className="md:hidden pointer-events-auto fixed top-6 right-4 sm:right-8 z-50">
         <StaggeredMenu items={navLinks} />
-      </nav>
+      </div>
     </motion.header>
   );
 }
