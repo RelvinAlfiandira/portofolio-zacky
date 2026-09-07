@@ -46,8 +46,13 @@ export default function AboutSection() {
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-4 pt-2">
-            <Button href="https://github.com/Zackyalghfr?subject=Let's%20Connect" variant="white" icon={ArrowRight}>
-                Let&apos;s Connect
+            <Button
+              href="https://github.com/Zackyalghfr?subject=Let's%20Connect"
+              variant="white"
+              icon={ArrowRight}
+              className="btn-ripple"
+            >
+              Let&apos;s Connect
             </Button>
           </div>
         </motion.div>

@@ -70,7 +70,7 @@ export default function HeroSection({ isReady }) {
             View Projects
           </Button>
 
-          <Button href="mailto:zackyalghifr@gmail.com?subject=Let's%20Connect" variant="blue" icon={ArrowRight}>
+          <Button href="https://github.com/Zackyalghfr" variant="blue" icon={ArrowRight}>
             Let&apos;s Connect
           </Button>
         </motion.div>
