@@ -78,7 +78,7 @@ export default function Preloader({ onPreloaderComplete }) {
         >
           <div className="w-full max-w-4xl mx-auto flex justify-center items-center">
             <StrokeText
-              text="WELCOME TO MY PORTFOLIO WEBSITE" 
+              text="WELCOME TO MY PORTFOLIO" 
               strokeColor="#15405f"
               fillColor="#ffffff"
               strokeWidth={1.5}
