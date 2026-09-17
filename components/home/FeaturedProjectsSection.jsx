@@ -32,9 +32,9 @@ export default function FeaturedProjectsSection() {
   return (
     <section className="w-full min-h-screen flex flex-col justify-center items-center py-20 px-4 overflow-hidden relative">
       <div className="max-w-6xl w-full mx-auto space-y-12">
-        
+
         {/* Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -52,7 +52,7 @@ export default function FeaturedProjectsSection() {
         </motion.div>
 
         {/* Project Cards */}
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -85,7 +85,7 @@ export default function FeaturedProjectsSection() {
                       <h3 className="text-lg sm:text-xl font-semibold text-white leading-snug">
                         {project.title}
                       </h3>
-                      
+
                       {project.category && (
                         <div className="flex items-center gap-1.5 text-xs text-zinc-300 font-sans">
                           <Folder size={12} />
@@ -108,8 +108,8 @@ export default function FeaturedProjectsSection() {
             </motion.div>
           ))}
         </motion.div>
-          
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -117,9 +117,9 @@ export default function FeaturedProjectsSection() {
           className="flex justify-center pt-4"
         >
           <Button href="/projects" variant="flow">
-  View All Projects
-</Button>
-          
+            View All Projects
+          </Button>
+
         </motion.div>
 
       </div>

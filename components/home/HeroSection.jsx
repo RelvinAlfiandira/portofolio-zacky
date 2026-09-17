@@ -2,8 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import TextType from '@/components/TextType'; 
+import TextType from '@/components/TextType';
 import Button from '@/components/ui/Button';
+import SocialConnect from '@/components/ui/SocialConnect';
 
 export default function HeroSection({ isReady }) {
   const containerVariants = {
@@ -70,11 +71,9 @@ export default function HeroSection({ isReady }) {
             View Projects
           </Button>
 
-          <Button href="https://github.com/Zackyalghfr" variant="blue" icon={ArrowRight}>
-            Let&apos;s Connect
-          </Button>
+          <SocialConnect variant="blue" />
         </motion.div>
-      </div> {/* <-- Penutup div max-w-4xl yang sebelumnya kurang */}
+      </div>
 
       <motion.p
         initial={{ opacity: 0 }}
