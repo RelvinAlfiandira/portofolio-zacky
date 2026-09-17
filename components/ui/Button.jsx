@@ -16,24 +16,22 @@ export default function Button({
   const flowClasses = `group relative flex items-center justify-center overflow-hidden rounded-xl border border-white/20 bg-white/5 px-7 h-11 sm:h-12 w-full sm:w-auto text-sm sm:text-base font-medium text-white cursor-pointer transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-transparent hover:text-zinc-950 active:scale-[0.95] ${className}`;
 
   const content = (
-    <span className="relative inline-flex items-center justify-center">
-      {/* Left arrow */}
-      <ArrowRight className="absolute w-4 h-4 left-[-25px] stroke-white fill-none z-[9] group-hover:left-[-32px] group-hover:stroke-zinc-950 transition-all duration-[800ms] ease-[cubic-bezier(0.34,1.56,0.64,1)]" />
-
-      {/* Text */}
-      <span className="relative z-[1] -translate-x-3 group-hover:translate-x-3 transition-all duration-[800ms] ease-out">
-        {children}
-      </span>
-
-      {/* Expanding circle background */}
-      <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-[50%] opacity-0 group-hover:w-[350px] group-hover:h-[350px] group-hover:opacity-100 transition-all duration-[800ms] ease-[cubic-bezier(0.19,1,0.22,1)] pointer-events-none" />
-
-      {/* Right arrow */}
-      <ArrowRight className="absolute w-4 h-4 right-[-25px] stroke-white fill-none z-[9] group-hover:right-[-32px] group-hover:stroke-zinc-950 transition-all duration-[800ms] ease-[cubic-bezier(0.34,1.56,0.64,1)]" />
+  <span className="relative inline-flex items-center justify-center gap-2">
+    {/* Text */}
+    <span className="relative z-[1] transition-all duration-[800ms] ease-out">
+      {children}
     </span>
-  );
 
-  // ... sisanya (if href / button) tetap sama
+    {/* Expanding circle background */}
+    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full opacity-0 group-hover:w-[350px] group-hover:h-[350px] group-hover:opacity-100 transition-all duration-[800ms] ease-[cubic-bezier(0.19,1,0.22,1)] pointer-events-none" />
+
+    {/* Arrow */}
+    <ArrowRight
+      className="relative z-[9] w-4 h-4 shrink-0 stroke-white fill-none group-hover:stroke-zinc-950 transition-all duration-[800ms] ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+    />
+  </span>
+);
+
 
     if (href) {
       return (
