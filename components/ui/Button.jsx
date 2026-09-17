@@ -6,16 +6,14 @@ export default function Button({
   children,
   href,
   onClick,
-  variant = 'white', 
+  variant = 'white',
   className = '',
   icon: Icon,
   ...props
 }) {
   // Varian Flow Button dengan efek ekspansi lingkaran & animasi panah
   if (variant === 'flow') {
-    const flowClasses = `group relative flex items-center justify-center overflow-hidden rounded-xl border border-white/20 bg-white/5 px-7 h-11 sm:h-12 text-sm sm:text-base font-medium text-white cursor-pointer transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-transparent hover:text-zinc-950 active:scale-[0.95] ${className}`;
-
-    const content = (
+    const flowClasses = `group relative flex items-center justify-center overflow-hidden rounded-xl border border-white/20 bg-white/5 px-7 h-11 sm:h-12 w-full sm:w-auto text-sm sm:text-base font-medium text-white cursor-pointer transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-transparent hover:text-zinc-950 active:scale-[0.95] ${className}`; const content = (
       <>
         {/* Left arrow */}
         <ArrowRight className="absolute w-4 h-4 left-[-25%] stroke-white fill-none z-[9] group-hover:left-5 group-hover:stroke-zinc-950 transition-all duration-[800ms] ease-[cubic-bezier(0.34,1.56,0.64,1)]" />
